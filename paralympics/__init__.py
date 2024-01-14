@@ -7,7 +7,7 @@ def create_app(test_config=None):
 
     # configure the Flask app (see later notes on how to generate your secret key)
     app.config. from_mapping(
-        SECRET_KEY='dev',
+        SECRET_KEY='nvMKOvpawAtHtCyhMeBylg',
         # Set the location of the database file called paralympics.sqlit
         SQLALCHEMY_DATABASE_URI= "sqlite:///" + os.path.join(app.instance_path))
 
@@ -25,5 +25,9 @@ def create_app(test_config=None):
 
     except OSError:
         pass
+
+    with app.app_context():
+        # import the routes
+        from paralympics import paralympics
 
     return app
