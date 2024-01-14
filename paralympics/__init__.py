@@ -1,5 +1,12 @@
 import os
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import Declarative_Base
+
+class Base(Declarative_Base):
+    pass
+
+db = SQLAlchemy(model_class=Base)
 
 def create_app(test_config=None):
     # create the Flask app
