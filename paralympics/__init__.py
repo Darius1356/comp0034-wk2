@@ -31,7 +31,16 @@ def create_app(test_config=None):
     except OSError:
         pass
 
+    # Initialise Flask with the SQLAlchemy database extension
+    db.init_app(app) 
+
+    # We must import the models defined in the models module
+    from paralympics.models import User, Region, Event
+    # Create tables in the database
+    # create_all does not update tables if they are already in the database
     with app.app_context():
+        #db.create_all()
+
         # Register the routes with the app in the context
         from paralympics import paralympics
     return app
