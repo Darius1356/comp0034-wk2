@@ -1,5 +1,6 @@
-from sqlalchemy import Integer, String
-from sqlalchemy.orm import Mapped, mapped_column
+from typing import List
+from sqlalchemy import Integer, String, ForeignKey
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from paralympics import db
 
 class User(db.Model):
@@ -16,10 +17,6 @@ def __init__(self, email: str, password: str):
     """        
     self.email = email
     self.password = password
-
-from typing import List
-from sqlalchemy import ForeignKey
-from sqlalchemy.orm import relationship
 
 class Region(db.Model):
     __tablename__ = "region"
@@ -46,7 +43,7 @@ class Event(db.Model):
     disabilities_included: Mapped[str] = mapped_column(db.Text, nullable=True)    
     countries: Mapped[str] = mapped_column(db.Text, nullable=True)    
     events: Mapped[int] = mapped_column(db.Integer, nullable=True)
-    athletes: Mapped[int] = mapped_column(db.Integer, nullable=True)    
+    #athletes: Mapped[int] = mapped_column(db.Integer, nullable=True)    
     sports: Mapped[int] = mapped_column(db.Integer, nullable=True)    
     participants_m: Mapped[int] = mapped_column(db.Integer, nullable=True)    
     participants_f: Mapped[int] = mapped_column(db.Integer, nullable=True)    
