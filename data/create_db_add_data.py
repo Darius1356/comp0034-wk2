@@ -19,6 +19,13 @@ def create_db():
     cursor = connection.cursor()
 
     # 2. Define the tables in SQL
+
+    # 'user' table definition in SQL
+    create_user_table = """CREATE TABLE if not exists user(
+        id INTEGER PRIMARY KEY,
+        email TEXT NOT NULL,
+        password TEXT NOT NULL);
+        """
     # 'region' table definition in SQL
     create_region_table = """CREATE TABLE if not exists region(
                     NOC TEXT PRIMARY KEY,
@@ -48,6 +55,7 @@ def create_db():
         FOREIGN KEY(NOC) REFERENCES region(NOC));"""
 
     # 4. Execute SQL to create the tables in the database
+    cursor.execute(create_user_table)
     cursor.execute(create_region_table)
     cursor.execute(create_event_table)
 
